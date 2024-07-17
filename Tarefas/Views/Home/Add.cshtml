@@ -1,0 +1,35 @@
+﻿@model Tarefa
+
+<h2>Nova Tarefa</h2>
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form asp-action="Add" method="post">
+    <div class="mb-3">
+        <label asp-for="Descricao" class="form-label">Descrição</label>
+        <input asp-for="Descricao" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoriaId" class="form-label">Categoria</label>
+        <select asp-for="CategoriaId" class="form-select" asp-items="@(new SelectList(ViewBag.Categorias, "CategoriaId", "Nome"))">
+            <option value="">Todos</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DataDeVencimento" class="form-label">Data de Vencimento</label>
+        <input asp-for="DataDeVencimento" class="form-control" type="date" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CondicaoId" class="form-label">Condição</label>
+        <select asp-for="CondicaoId" class="form-select" asp-items="@(new SelectList(ViewBag.Condicoes, "CondicaoId", "Nome"))">
+
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a asp-action="Index" class="btn btn-primary">Cancelar</a>
+
+
+</form>
